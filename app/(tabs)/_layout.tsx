@@ -1,22 +1,28 @@
 import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { View } from '@/components/Themed';
+import { Ionicons } from '@expo/vector-icons';
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+
+  function displayIcon(
+    iconName: string,
+    outsideIconName: string,
+    color: string,
+    focused: boolean) {
+    return (
+      <View className="flex-row items-center justify-center rounded-lg bg-[#E2D4FD] w-[50px]">
+        <Ionicons name={
+          (focused ? iconName : outsideIconName) as keyof typeof Ionicons.glyphMap} color={color} size={24} />
+      </View>
+    )
+  }
 
   return (
     <Tabs
@@ -29,29 +35,29 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          title: 'Home',
+          tabBarIcon: ({ color, focused }) => displayIcon("home", "home-outlline", color, focused),
         }}
       />
-      <Tabs.Screen
-        name="two"
+        <Tabs.Screen
+        name="explore"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Explorar',
+          tabBarIcon: ({ color, focused }) => displayIcon("compass", "compass-outlline", color, focused),
+        }}
+      />
+        <Tabs.Screen
+        name="favorites"
+        options={{
+          title: 'Favoritos',
+          tabBarIcon: ({ color, focused }) => displayIcon("heart", "heart-outlline", color, focused),
+        }}
+      />
+        <Tabs.Screen
+        name="sarch"
+        options={{
+          title: 'Buscar',
+          tabBarIcon: ({ color, focused }) => displayIcon("search", "search-outlline", color, focused),
         }}
       />
     </Tabs>
