@@ -1,11 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
 
 export default function Explore() {
   return (
-    <View>
+    <View > 
       <Text>Explore</Text>
     </View>
   );

@@ -4,8 +4,8 @@ import { Link, Tabs } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
-import { View } from '@/components/Themed';
 import { Ionicons } from '@expo/vector-icons';
+import { View } from 'react-native';
 
 
 export default function TabLayout() {
