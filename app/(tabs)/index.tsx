@@ -25,7 +25,7 @@ export default function TabOneScreen() {
     <SafeAreaView className=''>
       <Header />
 
-      <Text className="text-4xl mx-4">Inicio</Text>
+      <Text className="text-4xl mx-4 font-[Roboto-Bold]">Inicio</Text>
 
       <View className="my-4">
         <TouchableOpacity className="flex-row justify-between mx-4">

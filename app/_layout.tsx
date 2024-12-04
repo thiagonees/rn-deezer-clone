@@ -8,7 +8,6 @@ import 'react-native-reanimated';
 import "./global.css"
 
 import { useColorScheme } from '@/components/useColorScheme';
-import { StatusBar } from 'react-native';
 
 export {
   // Catch any errors thrown by the Layout component.
